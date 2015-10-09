@@ -60,6 +60,7 @@ module Darksidetaco
 
     # Other routes:
     # use Routes::Posts
+    use Routes::Index
   end
 end
 
