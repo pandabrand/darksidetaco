@@ -45,7 +45,7 @@ module Darksidetaco
           httponly: true,
           secure: production?,
           secure: false,
-          expire_after: 5.years,
+          expire_after: 1.years,
           secret: ENV['SESSION_SECRET']
     end
 
