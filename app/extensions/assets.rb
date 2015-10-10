@@ -27,6 +27,8 @@ module Darksidetaco
         Stylus.setup(assets)
 
         app.set :asset_host, ''
+        
+        app.set :assets_protocol, :https
 
         app.configure :development do
           assets.cache = Sprockets::Cache::FileStore.new('./tmp')
