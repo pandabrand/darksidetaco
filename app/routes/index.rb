@@ -2,6 +2,13 @@ module Darksidetaco
   module Routes
     class Index < Base
       get '/' do
+		t = Time.now
+
+		r = Range.new(
+		  Time.local(t.year, t.month, t.day, 21),
+		  Time.local(t.year, t.month, t.day+1, 2, 30)
+		)
+      	@itslit = t === r
         erb :index
       end
       

@@ -1,4 +1,5 @@
 <img src="<%= asset_path 'bat.png' %>" >
+<h2 class="ui-bar ui-bar-a">Logan Square Late Nite Taco Delivery</h2>
 <form name="taco_form" action="order" method="POST">
   <div class="ui-body">
     <div class="ui-grid-a ui-responsive">
@@ -27,7 +28,12 @@
       <div class="ui-block-a">
 	  </div>
 	  <div class="ui-block-b">
-		<button type="submit" class="ui-btn ui-corner-all">Order</button>
+	    <% if @itslit %>
+  		  <button type="submit" class="ui-btn ui-corner-all">Order</button>
+  		<% else %>
+  		  <p> Not yet, soon though.</p>
+  		  <p>Satuday, from 9pm-2:30am</p>
+  		<% end %>
 	  </div>
 
 	</div>
