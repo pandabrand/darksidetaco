@@ -36,7 +36,6 @@ module Darksidetaco
 
         app.configure :production do
           app.set :assets_protocol, :https
-          app.set :assets_prefix, '/assets'
           #assets.cache          = Sprockets::Cache::MemcacheStore.new
           assets.js_compressor  = Closure::Compiler.new
           assets.css_compressor = YUI::CssCompressor.new

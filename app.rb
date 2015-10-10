@@ -39,6 +39,7 @@ module Darksidetaco
 
     configure :production do
       set :force_ssl, true
+      set :root, File.realdirpath(".")
     end
 
     configure do
