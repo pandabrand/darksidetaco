@@ -38,7 +38,6 @@ module Darksidetaco
     end
 
     configure :production do
-      set  :host, 'darksidetaco.herokuapp.com'
       set :force_ssl, true
     end
 
@@ -62,9 +61,9 @@ module Darksidetaco
 
     use Routes::Static
 
-    unless settings.production?
+    #unless settings.production?
       use Routes::Assets
-    end
+    #end
 
     # Other routes:
     # use Routes::Posts
