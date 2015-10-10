@@ -19,7 +19,7 @@ module Darksidetaco
         # Assets
         app.set :assets, assets = Sprockets::Environment.new(app.settings.root)
 
-		print 'Assets helpers registered'
+		print "Assets helpers registered #{app.settings.root}"
         assets.append_path('app/assets/javascripts')
         assets.append_path('app/assets/stylesheets')
         assets.append_path('vendor/assets/javascripts')
