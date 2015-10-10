@@ -15,6 +15,7 @@ gem 'dotenv'
 
 # Assets
 gem 'sprockets'
+gem 'sprockets-helpers'
 #gem 'sprockets-memcache-store'
 gem 'uglifier'
 gem 'closure-compiler'

@@ -1,5 +1,6 @@
 require 'sprockets'
 require 'stylus/sprockets'
+require 'sinatra/sprockets-helpers'
 
 module Darksidetaco
   module Extensions
@@ -18,6 +19,7 @@ module Darksidetaco
         # Assets
         app.set :assets, assets = Sprockets::Environment.new(app.settings.root)
 
+
         assets.append_path('app/assets/javascripts')
         assets.append_path('app/assets/stylesheets')
         assets.append_path('vendor/assets/javascripts')
@@ -33,8 +35,8 @@ module Darksidetaco
         end
 
         app.configure :production do
-	      app.set :asset_host, 'darksidetaco.herokuapp.com'
           app.set :assets_protocol, :https
+          app.set :assets_prefix, '/assets'
           #assets.cache          = Sprockets::Cache::MemcacheStore.new
           assets.js_compressor  = Closure::Compiler.new
           assets.css_compressor = YUI::CssCompressor.new
