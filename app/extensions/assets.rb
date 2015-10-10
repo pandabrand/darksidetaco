@@ -33,7 +33,7 @@ module Darksidetaco
         end
 
         app.configure :production do
-          assets.cache          = Sprockets::Cache::MemcacheStore.new
+          #assets.cache          = Sprockets::Cache::MemcacheStore.new
           assets.js_compressor  = Closure::Compiler.new
           assets.css_compressor = YUI::CssCompressor.new
         end

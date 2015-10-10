@@ -15,9 +15,7 @@ gem 'dotenv'
 
 # Assets
 gem 'sprockets'
-group :production do
-  gem 'sprockets-memcache-store'
-end
+#gem 'sprockets-memcache-store'
 gem 'uglifier'
 gem 'closure-compiler'
 gem 'yui-compressor'
