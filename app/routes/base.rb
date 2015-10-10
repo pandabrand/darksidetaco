@@ -9,6 +9,10 @@ module Darksidetaco
         disable :protection
         disable :static
 
+		set :publishable_key, ENV['PUBLISHABLE_KEY']
+		set :secret_key, ENV['SECRET_KEY']
+		Stripe.api_key = settings.secret_key
+		
         set :erb, escape_html: true,
                   layout_options: {views: 'app/views/layouts'}
 

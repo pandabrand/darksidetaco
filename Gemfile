@@ -10,7 +10,7 @@ gem 'i18n'
 gem 'activesupport'
 gem 'rake'
 gem 'builder'
-gem 'json', '~> 1.7.7'
+gem 'json', '~> 1.8.1'
 gem 'dotenv'
 
 # Assets
@@ -35,3 +35,6 @@ group :development do
   gem 'thin'
   gem 'byebug'
 end
+
+#payment
+gem 'stripe', '1.29.1'

@@ -22,6 +22,8 @@ require 'app/models'
 require 'app/helpers'
 require 'app/routes'
 
+require 'stripe'
+
 module Darksidetaco
   class App < Sinatra::Application
     configure do
@@ -47,6 +49,7 @@ module Darksidetaco
           secure: false,
           expire_after: 1.years,
           secret: ENV['SESSION_SECRET']
+      
     end
 
     use Rack::Deflater
