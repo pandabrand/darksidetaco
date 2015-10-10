@@ -24,6 +24,12 @@ module Darksidetaco
 		  assets.append_path File.join(app.settings.root,'app','assets','stylesheets')
 		  assets.append_path File.join(app.settings.root,'vendor','assets','javascripts')
 		  assets.append_path File.join(app.settings.root,'vendor','assets','stylesheets')
+
+		  Sprockets::Helpers.configure do |config|
+			config.environment = assets
+			config.prefix      = '/assets'
+			config.digest      = true
+		  end
 		end 
 		
         Stylus.setup(assets)
