@@ -1,6 +1,6 @@
 require 'sprockets'
-require 'stylus/sprockets'
 require 'sinatra/sprockets-helpers'
+require 'sass'
 
 module Darksidetaco
   module Extensions
@@ -32,7 +32,6 @@ module Darksidetaco
 		  end
 		end 
 		
-        Stylus.setup(assets)
 
         app.set :asset_host, ''
 		        

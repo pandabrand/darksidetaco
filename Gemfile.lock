@@ -61,6 +61,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    sass (3.4.19)
     sequel (4.27.0)
     sinatra (1.4.6)
       rack (~> 1.4)
@@ -76,10 +77,6 @@ GEM
     stripe (1.29.1)
       json (~> 1.8.1)
       rest-client (~> 1.4)
-    stylus (1.0.1)
-      execjs
-      stylus-source
-    stylus-source (0.31.0)
     thin (1.6.4)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -119,6 +116,7 @@ DEPENDENCIES
   pg
   rack-standards
   rake
+  sass
   sequel
   sinatra
   sinatra-contrib!
@@ -126,8 +124,6 @@ DEPENDENCIES
   sprockets
   sprockets-helpers
   stripe (= 1.29.1)
-  stylus
-  stylus-source (= 0.31.0)
   thin
   uglifier
   unicorn
