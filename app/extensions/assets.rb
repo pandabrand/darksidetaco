@@ -20,7 +20,6 @@ module Darksidetaco
 
         assets.append_path('app/assets/javascripts')
         assets.append_path('app/assets/stylesheets')
-        assets.append_path('app/assets/images')
         assets.append_path('vendor/assets/javascripts')
         assets.append_path('vendor/assets/stylesheets')
 

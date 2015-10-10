@@ -61,9 +61,9 @@ module Darksidetaco
 
     use Routes::Static
 
-    #unless settings.production?
+    unless settings.production?
       use Routes::Assets
-    #end
+    end
 
     # Other routes:
     # use Routes::Posts
