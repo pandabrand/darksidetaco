@@ -4,8 +4,8 @@ namespace :assets do
     assets = Darksidetaco::Routes::Base.assets
     target = Pathname(Darksidetaco::App.root) + 'public/assets'
 
+    print 'compiling each asset'
     assets.each_logical_path do |logical_path|
-       print logical_path
       if asset = assets.find_asset(logical_path)
         filename = target.join(asset.digest_path)
         FileUtils.mkpath(filename.dirname)
