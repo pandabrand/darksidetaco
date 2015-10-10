@@ -1,0 +1,29 @@
+<div class="ui-body">
+  <% if @chicken.to_i > 0 %>
+    <h2>Chicken Tacos</h2>
+    <p>$<%= @chicken_cost %></p>
+  <% end %>
+  <% if @steak.to_i > 0 %>
+    <h2>Steak Tacos</h2>
+    <p>$<%= @steak_cost %></p>
+  <% end %>
+  <h1>Total</h1>
+  <p>$<%= @cost_display %>.00
+</div>
+<div class="ui-body">
+  <form action="/thanks" method="post">
+    <input type="hidden" value="<%= @phone %>" name="phone">
+    <input type="hidden" value="<%= @steak %>" name="steak">
+    <input type="hidden" value="<%= @chicken %>" name="chicken">
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= settings.publishable_key %>"
+            data-description="<%= @description %>"
+            data-amount="<%= @total_cost %>"
+            data-locale="auto"
+            data-name="Darkside Taco"
+            data-image="<% asset_path 'bat_stripe.png' %>"
+            data-shipping-address="true"
+            data-label="Buy Tacos"
+            data-allow-remember-me="false"></script>
+  </form>
+</div>

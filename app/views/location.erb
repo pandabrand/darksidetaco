@@ -1,0 +1,16 @@
+<div class="ui-body">
+  <h1 class="ui-header">Contact</h1>
+  <p class="ui-body">This number will be used if we need to contact you for delivery.</p>
+</div>
+<div class="ui-body">
+  <form name="location-form" id="location-form" action="/payment" method="POST">
+    <label for="phone">Phone Number</label>
+    <input name="phone" value="" id="phone" type="text" required>
+    <input type="hidden" name="steak" value="<%= @steak %>">
+    <input type="hidden" name="chicken" value="<%= @chicken %>">
+    <button type="submit" class="ui-btn ui-corner-all">Place Order</button>
+  </form>    
+  <script>
+  $("#location-form").validate();
+  </script>    
+</div>
