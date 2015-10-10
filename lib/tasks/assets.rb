@@ -8,6 +8,7 @@ namespace :assets do
       if asset = assets.find_asset(logical_path)
         filename = target.join(asset.digest_path)
         FileUtils.mkpath(filename.dirname)
+        puts filename
         asset.write_to(filename)
 
         filename = target.join(logical_path)
