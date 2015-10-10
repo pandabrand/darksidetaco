@@ -37,6 +37,11 @@ module Darksidetaco
       database.loggers << Logger.new(STDOUT)
     end
 
+    configure :production do
+      set  :host, 'darksidetaco.herokuapp.com'
+      set :force_ssl, true
+    end
+
     configure do
       disable :method_override
       disable :static
