@@ -79,7 +79,7 @@ module Darksidetaco
 			  }
 			}
 		  )
-		elsif @chicken_qty > 0 && @steak_qty = 0
+		elsif @chicken_qty > 0 && @steak_qty == 0
 		  @order = Stripe::Order.create(
 			:currency => 'usd',
 			:customer => customer.id,
@@ -100,7 +100,7 @@ module Darksidetaco
 			  }
 			}
 		  )
-		elsif @chicken_qty = 0 && @steak_qty > 0
+		elsif @chicken_qty == 0 && @steak_qty > 0
 		  @order = Stripe::Order.create(
 			:currency => 'usd',
 			:customer => customer.id,

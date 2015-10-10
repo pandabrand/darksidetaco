@@ -17,14 +17,15 @@ module Darksidetaco
 
       def registered(app)
         # Assets
-        app.set :assets, assets = Sprockets::Environment.new(app.settings.root)
+        app.set :assets, assets = Sprockets::Environment.new( app.settings.root )
 
-		print "Assets helpers registered #{app.settings.root}"
-        assets.append_path('app/assets/javascripts')
-        assets.append_path('app/assets/stylesheets')
-        assets.append_path('vendor/assets/javascripts')
-        assets.append_path('vendor/assets/stylesheets')
-
+        app.configure do
+		  assets.append_path File.join(app.settings.root,'app','assets','javascripts')
+		  assets.append_path File.join(app.settings.root,'app','assets','stylesheets')
+		  assets.append_path File.join(app.settings.root,'vendor','assets','javascripts')
+		  assets.append_path File.join(app.settings.root,'vendor','assets','stylesheets')
+		end 
+		
         Stylus.setup(assets)
 
         app.set :asset_host, ''
