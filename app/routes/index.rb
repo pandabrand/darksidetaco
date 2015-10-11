@@ -8,7 +8,7 @@ module Darksidetaco
 		  Time.local(t.year, t.month, t.day, 21),
 		  Time.local(t.year, t.month, t.day+1, 2, 30)
 		)
-      	@itslit = true
+      	@itslit = false
       	#if settings.production?
       	#  @itslit = t === r
       	#end
