@@ -8,7 +8,11 @@ module Darksidetaco
 		  Time.local(t.year, t.month, t.day, 21),
 		  Time.local(t.year, t.month, t.day+1, 2, 30)
 		)
-      	@itslit = t === r
+      	@itslit = true
+      	if settings.production?
+      	  @itslit = t === r
+      	end
+      	
         erb :index
       end
       
@@ -60,12 +64,12 @@ module Darksidetaco
 			:items => [
 			  {
 				:type => 'sku',
-				:parent => 'sku_78NYRlVxAkrUiJ',
+				:parent => ENV['CHICKEN'],
 				:quantity => @chicken
 			  },
 			  {
 				:type => 'sku',
-				:parent => 'sku_78NZC6u4YXjMkD',
+				:parent => ENV['STEAK'],
 				:quantity => @steak
 			  }
 			],
@@ -86,7 +90,7 @@ module Darksidetaco
 			:items => [
 			  {
 				:type => 'sku',
-				:parent => 'sku_78NYRlVxAkrUiJ',
+				:parent => ENV['CHICKEN'],
 				:quantity => @chicken
 			  }
 			],
@@ -107,7 +111,7 @@ module Darksidetaco
 			:items => [
 			  {
 				:type => 'sku',
-				:parent => 'sku_78NZC6u4YXjMkD',
+				:parent => ENV['STEAK'],
 				:quantity => @steak
 			  }
 			],

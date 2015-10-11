@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
+ruby '2.2.3'
 
 gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-contrib', github: 'maccman/sinatra-contrib'
