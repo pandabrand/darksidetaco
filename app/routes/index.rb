@@ -9,9 +9,9 @@ module Darksidetaco
 		  Time.local(t.year, t.month, t.day+1, 2, 30)
 		)
       	@itslit = true
-      	if settings.production?
-      	  @itslit = t === r
-      	end
+      	#if settings.production?
+      	#  @itslit = t === r
+      	#end
       	
         erb :index
       end
