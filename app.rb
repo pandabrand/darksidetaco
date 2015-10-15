@@ -23,6 +23,9 @@ require 'app/helpers'
 require 'app/routes'
 
 require 'stripe'
+require 'money'
+require 'encrypted_cookie'
+require 'date'
 
 module Darksidetaco
   class App < Sinatra::Application
@@ -48,12 +51,13 @@ module Darksidetaco
 
       set :erb, escape_html: true
 
-      set :sessions,
-          httponly: true,
-          secure: production?,
-          secure: false,
-          expire_after: 1.years,
-          secret: ENV['SESSION_SECRET']
+      use Rack::Session::EncryptedCookie,:secret => ENV['SESSION_SECRET']
+          
+#       set :sessions,
+#           httponly: true,
+#           secure: production?,
+#           expire_after: 60.minutes,
+#           secret: ENV['SESSION_SECRET']
       
     end
 
@@ -69,6 +73,9 @@ module Darksidetaco
     # Other routes:
     # use Routes::Posts
     use Routes::Index
+    use Routes::Order
+    use Routes::Payment
+    use Routes::Thanks
   end
 end
 
