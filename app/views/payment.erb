@@ -1,14 +1,10 @@
 <div class="ui-body">
-  <% if @chicken.to_i > 0 %>
-    <h2>Chicken Tacos</h2>
-    <p>$<%= @chicken_cost %></p>
-  <% end %>
-  <% if @steak.to_i > 0 %>
-    <h2>Steak Tacos</h2>
-    <p>$<%= @steak_cost %></p>
+  <% for item in @order_items.keys %>
+    <h2><%= item.name %></h2>
+    <p>$<%= make_price_from_product_and_quantity item, @order_items[item] %></p>
   <% end %>
   <h1>Total</h1>
-  <p>$<%= @cost_display %>.00
+  <p>$<%= Money.new(@total, "USD") %>
 </div>
 <div class="ui-body">
   <form action="/thanks" method="post">
@@ -17,8 +13,8 @@
     <input type="hidden" value="<%= @chicken %>" name="chicken">
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= settings.publishable_key %>"
-            data-description="<%= @description %>"
-            data-amount="<%= @total_cost %>"
+            data-description="<%= @description.join(" ") %>"
+            data-amount="<%= @total %>"
             data-locale="auto"
             data-name="Darkside Taco"
             data-shipping-address="true"
