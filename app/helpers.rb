@@ -6,11 +6,13 @@ module Darksidetaco
     
     def is_store_open
 	  open_dates = ENV['DATES_OPEN'].split(",")
-	  today = Date.today
+	  today_not_local = Time.now
+	  today = today_not_local.localtime("-06:00")
 	  open_date = open_dates.find { |date| Date.parse(date) == today }
 	  unless open_date.nil?
-		open_time = DateTime.new(open_date.year, open_date.month, open_date.day, 21, 0, 0, '-6')
-		closing = DateTime.new(open_date.year, open_date.month, open_date.day+1, 2, 30, 0, '-6')
+	    open = Date.parse(open_date)
+		open_time = DateTime.new(open.year, open.month, open.day, 21, 0, 0, '-6')
+		closing = DateTime.new(open.year, open.month, open.day+1, 2, 30, 0, '-6')
 		return today.to_datetime > open_time && today.to_datetime < closing
 	  end
 	  return false
