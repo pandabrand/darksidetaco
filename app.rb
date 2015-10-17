@@ -26,9 +26,11 @@ require 'stripe'
 require 'money'
 require 'encrypted_cookie'
 require 'date'
+require 'active_support/core_ext/time'
 
 module Darksidetaco
   class App < Sinatra::Application
+	Time.zone = "America/Chicago"
     configure do
       set :database, lambda {
         ENV['DATABASE_URL'] ||
@@ -48,16 +50,15 @@ module Darksidetaco
     configure do
       disable :method_override
       disable :static
-
+      
+      
       set :erb, escape_html: true
 
-      use Rack::Session::EncryptedCookie,:secret => ENV['SESSION_SECRET']
-          
-#       set :sessions,
-#           httponly: true,
-#           secure: production?,
-#           expire_after: 60.minutes,
-#           secret: ENV['SESSION_SECRET']
+      use Rack::Session::EncryptedCookie,:secret => ENV['SESSION_SECRET'],
+          httponly: true,
+          secure: production?,
+          expire_after: 60.minutes,
+          secret: ENV['SESSION_SECRET']
       
     end
 

@@ -31,11 +31,9 @@
       <div class="ui-block-a ui-responsive">
 	  </div>
 	  <div class="ui-block-b ui-responsive">
-<!--
-	    <% if is_store_open %>
+	    <% if @show_order_button %>
   		  <button type="submit" class="ui-btn ui-corner-all">Order</button>
   		<% else %>
-  	-->
 			<a href="#order" data-role="button" data-transition="flip" data-rel="popup" class="ui-btn ui-corner-all ui-btn-up-a">
               Order
              </a>
@@ -46,12 +44,10 @@
 			</div>
 			<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content ui-body-d" role="main">
 				<h3 class="ui-title">We are gonna be ready for you soon.</h3>
-				<p>Technical Difficulties are shutting us down early. </p>
+				<p>We will be back on <%= @next_opening.strftime("%b %e at %l%P") %> </p>
 			</div>
 		</div>
-		<!--
   		<% end %>
-  		-->
 	  </div>
 
 	</div>

@@ -2,17 +2,10 @@ module Darksidetaco
   module Routes
     class Index < Base
       get '/' do
-		t = Time.now
-
-		r = Range.new(
-		  Time.local(t.year, t.month, t.day, 21),
-		  Time.local(t.year, t.month, t.day+1, 2, 30)
-		)
-      	itslit = false
-      	#if settings.production?
-      	#  @itslit = t === r
-      	#end
-      	
+      	@open_date = next_open_date
+      	time_open = ENV['TIME_OPEN'].split(",")
+      	@show_order_button = is_store_open @open_date,time_open,ENV['TIME_CLOSE'].split(",")
+  	    @next_opening = Time.zone.local(next_open_date.year, next_open_date.month, next_open_date.day, time_open[0].to_i, time_open[1].to_i, time_open[2].to_i)
 	    @products = Stripe::Product.all
         erb :index
       end
