@@ -3,8 +3,9 @@ module Darksidetaco
     class Order < Base
       post '/order' do
         items = params.find_all { |item| item[1].to_i > 0 }
-        items.each{|p| puts p[1]}
-        session[:items] = items
+        order = Hash.new
+        order[:items] = Hash[*items.flatten]
+        session[:order] = order
       	erb :location
       end
     end

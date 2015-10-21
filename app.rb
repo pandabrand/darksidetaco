@@ -56,9 +56,9 @@ module Darksidetaco
 
       use Rack::Session::EncryptedCookie,:secret => ENV['SESSION_SECRET'],
           httponly: true,
+          path: '/',
           secure: production?,
-          expire_after: 60.minutes,
-          secret: ENV['SESSION_SECRET']
+          expire_after: 60.minutes
       
     end
 
