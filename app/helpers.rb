@@ -16,8 +16,8 @@ module Darksidetaco
     
     def next_open_date
 	  open_dates = ENV['DATES_OPEN'].split(",")
-	  today = Date.today
-	  open_date = open_dates.find { |date| Date.parse(date) >= today }
+	  today = Time.zone.now
+	  open_date = open_dates.find { |date| Date.parse(date) >= today.to_date }
 	  return Date.parse(open_date)
 	end
   end
