@@ -4,6 +4,7 @@ module Darksidetaco
       post '/payment' do
         order = session[:order]
         @phone = params[:phone]
+        puts order
         @items = order[:items]
 		@order_items = Hash.new
 		@items.each{|id, qty| @order_items[Stripe::Product.retrieve(id)] = qty}
