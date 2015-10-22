@@ -9,6 +9,8 @@ module Darksidetaco
 	  puts today
 	  opening = Time.zone.local(open_date.year, open_date.month, open_date.day, time_open[0].to_i, time_open[1].to_i, time_open[2].to_i)
 	  closing = Time.zone.local(open_date.year, open_date.month, open_date.day+1, time_close[0].to_i, time_close[1].to_i, time_close[2].to_i)
+	  puts opening
+	  puts closing
 	  return today.to_datetime > opening && today.to_datetime < closing
     end
     
