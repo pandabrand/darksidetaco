@@ -9,8 +9,7 @@
 <div class="ui-body">
   <form action="/thanks" method="post">
     <input type="hidden" value="<%= @phone %>" name="phone">
-    <input type="hidden" value="<%= @steak %>" name="steak">
-    <input type="hidden" value="<%= @chicken %>" name="chicken">
+	<input type="hidden" value="<%= @items.flatten.join(",") %>" name="order_v">
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= settings.publishable_key %>"
             data-description="<%= @description.join(" ") %>"
