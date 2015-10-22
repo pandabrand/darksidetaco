@@ -5,7 +5,7 @@ module Darksidetaco
     end
     
     def is_store_open(open_date, time_open, time_close)
-	  today = Time.now
+	  today = Time.zone.now
 	  opening = Time.zone.local(open_date.year, open_date.month, open_date.day, time_open[0].to_i, time_open[1].to_i, time_open[2].to_i)
 	  closing = Time.zone.local(open_date.year, open_date.month, open_date.day+1, time_close[0].to_i, time_close[1].to_i, time_close[2].to_i)
 	  return today.to_datetime > opening && today.to_datetime < closing
