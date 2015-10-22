@@ -8,7 +8,7 @@ module Darksidetaco
       	puts @lift_gate
       	@show_order_button = is_store_open @open_date,time_open,ENV['TIME_CLOSE'].split(",")
   	    @next_opening = Time.zone.local(next_open_date.year, next_open_date.month, next_open_date.day, time_open[0].to_i, time_open[1].to_i, time_open[2].to_i)
-	    @products = Stripe::Product.all
+	    @products = Stripe::Product.all(:active => true)
         erb :index
       end
       
