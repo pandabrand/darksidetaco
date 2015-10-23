@@ -6,7 +6,7 @@ module Darksidetaco
         @phone = params[:phone]
         @notes = params[:notes]
         puts "notes: " + @notes
-        @items = session[:order][:items]
+        @items = Hash[*param[:items].split(",")]
 		@order_items = Hash.new
 		@items.each{|id, qty| @order_items[Stripe::Product.retrieve(id)] = qty}
 		@description = Array.new
