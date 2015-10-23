@@ -8,7 +8,7 @@
     <input name="phone" value="" id="phone" type="text" required>
     <label for="notes">Add'l Info (subsitutions, omissions, how to find you, etc.)<label>
     <textarea name="notes" id="notes" cols="4"></textarea>
-    <input type="hidden" value="<%= @items.join(",") %>" name="items">
+    <input type="hidden" value="<%= @items.flatten.join(",") %>" name="items">
     <button type="submit" class="ui-btn ui-corner-all">Place Order</button>
   </form>    
   <script>
