@@ -40,11 +40,11 @@ module Darksidetaco
 
     configure :development, :staging do
       database.loggers << Logger.new(STDOUT)
-      use Rack::Session::Cookie
-      set :session_secret, ENV['SESSION_SECRET']
-      set :sessions, :path => '/'
-      set :sessions, :secure => production?
-      set :sessions, :expire_after => 60.minutes
+#       use Rack::Session::Cookie
+#       set :session_secret, ENV['SESSION_SECRET']
+#       set :sessions, :path => '/'
+#       set :sessions, :secure => production?
+#       set :sessions, :expire_after => 60.minutes
     end
 
     configure do
@@ -53,6 +53,8 @@ module Darksidetaco
       
       
       set :erb, escape_html: true
+	  enable :sessions
+	  set :session_secret, ENV['SESSION_SECRET']
 
 #       use Rack::Session::Pool
 #       set :session_secret, ENV['SESSION_SECRET']

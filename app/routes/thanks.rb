@@ -3,7 +3,7 @@ module Darksidetaco
     class Thanks < Base
       post '/thanks' do
       	
-      	puts 'session thanks: ' + env['rack.session'].to_s
+      	puts 'session thanks: ' + [:session].to_s
 		customer = Stripe::Customer.create(
 		  :email => params[:stripeEmail],
 		  :card  => params[:stripeToken]
@@ -15,14 +15,14 @@ module Darksidetaco
 		order_hash = Hash[*order_str.split(",")]
 		items = Array.new
 # 		order_hash.each{|id, qty| items.push({:type => 'sku', :parent => Stripe::Product.retrieve(id).skus.data.first.id, :quantity => qty})}
-		env['rack.session'][:order_items].each{|product,qty| items.push({:type => 'sku',:parent => product.skus.data.first.id, :quantity => qty})}
+		[:session][:order_items].each{|product,qty| items.push({:type => 'sku',:parent => product.skus.data.first.id, :quantity => qty})}
 		@order = Stripe::Order.create(
 		  :currency => 'usd',
 		  :customer => customer.id,
 		  :items => items,
 		  :shipping => {
 			:name => params[:stripeShippingName],
-			:phone => env['rack.session'][:phone],
+			:phone => [:session][:phone],
 			:address => {
 			  :line1 => params[:stripeShippingAddressLine1],
 			  :city => params[:stripeShippingAddressCity],

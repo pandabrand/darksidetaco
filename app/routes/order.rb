@@ -5,7 +5,7 @@ module Darksidetaco
         items = params.find_all { |item| item[1].to_i > 0 }
         order = Hash.new
         order[:items] = Hash[*items.flatten]
-        env['rack.session'][:order] = order
+        [:session][:order] = order
       	erb :location
       end
     end
