@@ -14,15 +14,15 @@ module Darksidetaco
 		puts "order: " + order_str.to_s
 		order_hash = Hash[*order_str.split(",")]
 		items = Array.new
-		order_hash.each{|id, qty| items.push({:type => 'sku', :parent => Stripe::Product.retrieve(id).skus.data.first.id, :quantity => qty})}
-# 		session[:order][:order_items].each{|product,qty| items.push({:type => 'sku',:parent => product.skus.data.first.id, :quantity => qty})}
+# 		order_hash.each{|id, qty| items.push({:type => 'sku', :parent => Stripe::Product.retrieve(id).skus.data.first.id, :quantity => qty})}
+		env['rack.session'][:order_items].each{|product,qty| items.push({:type => 'sku',:parent => product.skus.data.first.id, :quantity => qty})}
 		@order = Stripe::Order.create(
 		  :currency => 'usd',
 		  :customer => customer.id,
 		  :items => items,
 		  :shipping => {
 			:name => params[:stripeShippingName],
-			:phone => params[:phone],
+			:phone => env['rack.session'][:phone],
 			:address => {
 			  :line1 => params[:stripeShippingAddressLine1],
 			  :city => params[:stripeShippingAddressCity],

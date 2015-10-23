@@ -4,7 +4,6 @@ module Darksidetaco
       post '/payment' do
         order = env['rack.session'][:order]
         @phone = params[:phone]
-        puts 'Payment-order: ' + order.inspect
         @items = order[:items]
 		@order_items = Hash.new
 		@items.each{|id, qty| @order_items[Stripe::Product.retrieve(id)] = qty}
@@ -12,6 +11,7 @@ module Darksidetaco
 		@order_items.each{|item, qty| @description.push(item.name + ": "  + qty)}
 		@total = @order_items.keys.map{|product| product.skus.data.first.price * @order_items[product].to_i}.inject(0, &:+)
 		order[:order_items] = @order_items
+		order[:phone] = @phone
 		env['rack.session'][:order] = order
       	erb :payment
       end
