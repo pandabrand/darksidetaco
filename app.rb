@@ -54,11 +54,12 @@ module Darksidetaco
       
       set :erb, escape_html: true
 
-      use Rack::Session::Cookie,
-          :secret => ENV['SESSION_SECRET'],
-          :path => '/',
-          :secure => production?,
-          :expire_after => 60.minutes
+      use Rack::Session::EncryptedCookie,:secret => ENV['SESSION_SECRET'],
+        httponly: true,
+        path: '/',
+        secure: production?,
+        :expire_after => 60.minutes
+
       
     end
 
