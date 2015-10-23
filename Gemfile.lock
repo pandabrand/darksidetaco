@@ -55,6 +55,7 @@ GEM
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
+    rack-ssl-enforcer (0.2.9)
     rack-standards (0.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -119,6 +120,7 @@ DEPENDENCIES
   memcachier
   money
   pg
+  rack-ssl-enforcer
   rack-standards
   rake
   sass
@@ -133,3 +135,6 @@ DEPENDENCIES
   uglifier
   unicorn
   yui-compressor
+
+BUNDLED WITH
+   1.10.6

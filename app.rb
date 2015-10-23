@@ -24,6 +24,7 @@ require 'app/routes'
 
 require 'stripe'
 require 'money'
+require 'rack/ssl-enforcer'
 require 'encrypted_cookie'
 require 'date'
 require 'active_support/core_ext/time'
@@ -53,6 +54,8 @@ module Darksidetaco
       
       
       set :erb, escape_html: true
+
+      use Rack::SslEnforcer
 
       use Rack::Session::EncryptedCookie,:secret => ENV['SESSION_SECRET'],
         httponly: false,

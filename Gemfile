@@ -14,6 +14,7 @@ gem 'json', '~> 1.8.1'
 gem 'dotenv'
 gem 'money'
 gem 'encrypted_cookie'
+gem 'rack-ssl-enforcer'
 
 # Assets
 gem 'sprockets'
