@@ -10,9 +10,9 @@ module Darksidetaco
 		@description = Array.new
 		@order_items.each{|item, qty| @description.push(item.name + ": "  + qty)}
 		@total = @order_items.keys.map{|product| product.skus.data.first.price * @order_items[product].to_i}.inject(0, &:+)
-		order[:order_items] = @order_items
-		order[:phone] = @phone
-		env['rack.session'][:order] = order
+		env['rack.session'][:order_items] = @order_items
+		env['rack.session'][:phone] = @phone
+# 		env['rack.session'][:order] = order
       	erb :payment
       end
     end
