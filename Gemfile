@@ -28,6 +28,7 @@ gem 'sass'
 gem 'dalli'
 gem 'memcachier'
 gem 'moneta'
+gem 'redis'
 
 # DB
 gem 'sequel'
