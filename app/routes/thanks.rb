@@ -3,7 +3,7 @@ module Darksidetaco
     class Thanks < Base
       post '/thanks' do
       	
-      	puts 'session thanks: ' + env['rack.session'].to_s
+      	puts 'session thanks: ' + env['rack.session'][:order_items].to_s
 		customer = Stripe::Customer.create(
 		  :email => params[:stripeEmail],
 		  :card  => params[:stripeToken]
