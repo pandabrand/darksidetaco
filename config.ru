@@ -7,8 +7,6 @@ run taco
 if ENV['RACK_ENV'] == 'production'
   use Rack::Session::Cookie,
     :key => 'rack.session',
-    :domain => 'darksidetaco.com',
-    :path => '/',
-    :expire_after => 2592000, # In seconds
+    :expire_after => 60.minutes, # In seconds
     :secret => ENV['SESSION_SECRET']
 end
