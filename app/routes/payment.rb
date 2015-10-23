@@ -9,6 +9,7 @@ module Darksidetaco
 		@items.each{|id, qty| @order_items[Stripe::Product.retrieve(id)] = qty}
 		@description = Array.new
 		@order_items.each{|item, qty| @description.push(item.name + ": "  + qty)}
+		puts "Payment-order_items: " + @order_items.to_s
 		@total = @order_items.keys.map{|product| product.skus.data.first.price * @order_items[product].to_i}.inject(0, &:+)
 		env['rack.session'][:order_items] = @order_items
 		env['rack.session'][:phone] = @phone
