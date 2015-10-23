@@ -10,6 +10,7 @@
   <form action="/thanks" method="post">
     <input type="hidden" value="<%= @phone %>" name="phone">
 	<input type="hidden" value="<%= @items.flatten.join(",") %>" name="order_v">
+	<input type="hidden" value="<%= @notes %>" name="notes">
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= settings.publishable_key %>"
             data-description="<%= @description.join(" ") %>"
@@ -18,6 +19,6 @@
             data-name="Darkside Taco"
             data-shipping-address="true"
             data-label="Buy Tacos"
-            data-allow-remember-me="false"></script>
+            data-allow-remember-me="true"></script>
   </form>
 </div>

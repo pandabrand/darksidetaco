@@ -19,6 +19,7 @@ module Darksidetaco
 		  :currency => 'usd',
 		  :customer => customer.id,
 		  :items => items,
+		  :metadata => { "notes": params[:notes] },
 		  :shipping => {
 			:name => params[:stripeShippingName],
 			:phone => params[:phone],
