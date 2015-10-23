@@ -10,9 +10,7 @@ if ENV['RACK_ENV'] == 'production'
 #     :key => 'rack.session',
 #     :expire_after => 60.minutes, # In seconds
 #     :secret => ENV['SESSION_SECRET']
-puts ENV['URL']
-#   use Rack::MonetaCookies, domain: 'example.com', path: '/'
-  use Rack::MonetaCookies, path: '/'
+  use Rack::MonetaCookies, domain: ENV['DOMAIN'], path: '/'
 	run lambda { |env|
 	  req = Rack::Request.new(env)
 	  req.cookies #=> is now a Moneta store!
