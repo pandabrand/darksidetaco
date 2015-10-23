@@ -2,6 +2,8 @@ module Darksidetaco
   module Routes
     class Payment < Base
       post '/payment' do
+      	puts session
+      	puts env['rack.session']
         order = session[:order]
         @phone = params[:phone]
         puts order
