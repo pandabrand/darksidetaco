@@ -40,11 +40,11 @@ module Darksidetaco
 
     configure :development, :staging do
       database.loggers << Logger.new(STDOUT)
-    end
-
-    configure :production do
-      set :force_ssl, true
-      set :root, File.realdirpath(".")
+      use Rack::Session::Cookie
+      set :session_secret, ENV['SESSION_SECRET']
+      set :sessions, :path => '/'
+      set :sessions, :secure => production?
+      set :sessions, :expire_after => 60.minutes
     end
 
     configure do
@@ -54,13 +54,19 @@ module Darksidetaco
       
       set :erb, escape_html: true
 
-      use Rack::Session::Cookie,
-          :secret => ENV['SESSION_SECRET'],
-          :path => '/',
-          :secure => production?,
-          :expire_after => 60.minutes
-      
+#       use Rack::Session::Pool
+#       set :session_secret, ENV['SESSION_SECRET']
+#       set :sessions, :path => '/'
+#       set :sessions, :secure => production?
+#       set :sessions, :expire_after => 60.minutes
     end
+    
+    configure :production do
+      set :force_ssl, true
+      set :root, File.realdirpath(".")
+#       set :sessions, :domain => 'darksidetaco.com'
+    end
+
 
     use Rack::Deflater
     use Rack::Standards
