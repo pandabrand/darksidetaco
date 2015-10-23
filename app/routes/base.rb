@@ -18,7 +18,6 @@ module Darksidetaco
 
         enable :use_code
       end
-      session = getSessionStore.load(sessionId)
       
       register Extensions::Assets
       helpers Helpers
