@@ -5,8 +5,8 @@ module Darksidetaco
         order = session[:order]
         @phone = params[:phone]
         @notes = params[:notes]
-        puts "notes: " + @notes
-        @items = Hash[*param[:items].split(",")]
+        puts "session order: " + order.to_s
+        @items = Hash[*params[:items].split(",")]
 		@order_items = Hash.new
 		@items.each{|id, qty| @order_items[Stripe::Product.retrieve(id)] = qty}
 		@description = Array.new
