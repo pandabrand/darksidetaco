@@ -17,5 +17,9 @@ module Darksidetaco
 	  open_date = open_dates.find { |date| Date.parse(date) >= today.to_date }
 	  return Date.parse(open_date)
 	end
+	
+	def getSessionStore
+		@env['rack.session.options'][:store]
+	end
   end
 end

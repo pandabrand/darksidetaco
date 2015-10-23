@@ -24,9 +24,9 @@ require 'app/routes'
 
 require 'stripe'
 require 'money'
-require 'encrypted_cookie'
 require 'date'
 require 'active_support/core_ext/time'
+require 'moneta'
 
 module Darksidetaco
   class App < Sinatra::Application
@@ -53,8 +53,8 @@ module Darksidetaco
       
       
       set :erb, escape_html: true
-	  enable :sessions
-	  set :session_secret, ENV['SESSION_SECRET']
+# 	  enable :sessions
+# 	  set :session_secret, ENV['SESSION_SECRET']
 
 #       use Rack::Session::Pool
 #       set :session_secret, ENV['SESSION_SECRET']

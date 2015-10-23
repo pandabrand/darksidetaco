@@ -1,5 +1,6 @@
 require './app'
 require 'sprockets'
+require 'moneta'
 require 'rack/session/moneta'
 
 taco = Darksidetaco::App
@@ -12,21 +13,21 @@ if ENV['RACK_ENV'] == 'production'
 #     :secret => ENV['SESSION_SECRET']
 
   # Use only the adapter name
-#   use Rack::Session::Moneta, store: :Redis
+  use Rack::Session::Moneta, store: :Redis
 
   # Use Moneta.new
-#   use Rack::Session::Moneta, store: Moneta.new(:Memory, expires: true)
+  use Rack::Session::Moneta, store: Moneta.new(:Memory, expires: true)
 
   # Set rack options
-#   use Rack::Session::Moneta, key: 'rack.session',
-#   domain: ENV['DOMAIN'],
-#   path: '/',
-#   expire_after: 2592000,
-#   store: Moneta.new(:Memory, expires: true)
+  use Rack::Session::Moneta, key: 'rack.session',
+  domain: ENV['DOMAIN'],
+  path: '/',
+  expire_after: 2592000,
+  store: Moneta.new(:Memory, expires: true)
 
   # Use the Moneta builder
-#   use Rack::Session::Moneta do
-# 	use :Expires
-# 	adapter :Memory
-#   end
+  use Rack::Session::Moneta do
+	use :Expires
+	adapter :Memory
+  end
 end

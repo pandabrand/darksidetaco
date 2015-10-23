@@ -18,7 +18,8 @@ module Darksidetaco
 
         enable :use_code
       end
-
+      session = sessionStore.load(sessionId)
+      
       register Extensions::Assets
       helpers Helpers
       helpers Sinatra::ContentFor
