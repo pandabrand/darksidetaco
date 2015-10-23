@@ -27,6 +27,7 @@ gem 'eco'
 gem 'sass'
 gem 'dalli'
 gem 'memcachier'
+gem 'moneta'
 
 # DB
 gem 'sequel'
